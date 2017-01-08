@@ -8,7 +8,7 @@ Please report any bugs.
 
 ## Quick start
 
-Note that the artifact is not yet available in maven central repository. Meanwhile I suggest you to add the source to your maven build in order to make it available in your local repository.
+Note that the artifact is not yet available in maven central repository. Meanwhile I suggest you to clone the source and build the plugin with "mvn clean install" in order to make it available in your local repository.
 
 To use it, simply add the plugin to your build:
 
