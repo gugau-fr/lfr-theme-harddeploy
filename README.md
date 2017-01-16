@@ -8,8 +8,6 @@ Please report any bugs.
 
 ## Quick start
 
-Note that the artifact is not yet available in maven central repository. Meanwhile I suggest you to clone the source and build the plugin with "mvn clean install" in order to make it available in your local repository.
-
 To use it, simply add the plugin to your build:
 
 ```xml
@@ -17,8 +15,8 @@ To use it, simply add the plugin to your build:
 	<plugins>
 		<plugin>
 			<groupId>fr.gugau.lfr.tools</groupId>
-			<artifactId>lfr-theme-livedeploy</artifactId>
-			<version>${livedeploy.version}</version>
+            <artifactId>lfr-theme-livedeploy</artifactId>
+            <version>1.0-alpha</version>
 		</plugin>
 	</plugins>
 </build>
