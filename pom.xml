@@ -5,9 +5,16 @@
     <artifactId>lfr-theme-livedeploy</artifactId>
     <version>1.0-alpha</version>
     <packaging>maven-plugin</packaging>
- 
     <name>Liferay Theme Live-deploy</name>
     <description>Maven plugin that allow developpers to deploy a Liferay theme in seconds</description>
+    <url>https://github.com/gugau-fr/lfr-theme-livedeploy/</url>
+ 
+    <developers>
+        <developer>
+            <name>Guillaume GAUHTIER</name>
+            <email>contact@gugau.fr</email>
+        </developer>
+    </developers>
  
     <licenses>
         <license>
@@ -21,6 +28,17 @@
         <developerConnection>scm:git:git@github.com:gugau-fr/lfr-theme-livedeploy.git</developerConnection>
         <url>https://github.com/gugau-fr/lfr-theme-livedeploy</url>
     </scm>
+ 
+    <distributionManagement>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+        <repository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+    </distributionManagement>
  
     <dependencies>
         <dependency>
@@ -53,8 +71,47 @@
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>2.2.1</version>
+                <executions>
+                    <execution>
+                    <id>attach-sources</id>
+                    <goals>
+                        <goal>jar-no-fork</goal>
+                    </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-plugin-plugin</artifactId>
                 <version>3.0</version>
+            </plugin>
+            
+            <plugin>
+                <groupId>org.sonatype.plugins</groupId>
+                <artifactId>nexus-staging-maven-plugin</artifactId>
+                <version>1.6.7</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <serverId>ossrh</serverId>
+                    <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                    <autoReleaseAfterClose>false</autoReleaseAfterClose>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>1.5</version>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
